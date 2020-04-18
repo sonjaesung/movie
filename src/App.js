@@ -1,5 +1,6 @@
 import React from "react";
 import Test1 from "./Test1";
+import PropTypes from "prop-types";
 
 // props 로 모든 데이터를 받아 올 수 있슴, {변수명} 으로 필요데이터만 받아올 수도 있슴.
 function Test2(porps /*, { rere }*/) {
@@ -10,17 +11,23 @@ function Test2(porps /*, { rere }*/) {
     );
 }
 
-function Test3(porps) {
+function Test3({ name }, { age }) {
     return (
         <h4>
-            {porps.userInfo.name}, {porps.userInfo.age}
+            {name}, {age}
         </h4>
     );
 }
 
+// props 들의 type 을 점검.
+Test3.propTypes = {
+    name: PropTypes.string.isRequired,
+    age: PropTypes.number,
+};
+
 // react 내부에서 구분을 위해 서로 다른 key 값이 필요함.
 function drawTest3(user) {
-    return <Test3 key={user.id} userInfo={user} />;
+    return <Test3 key={user.id} name={user.name} age={user.age} />;
 }
 
 let testValue = [
