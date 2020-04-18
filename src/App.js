@@ -18,20 +18,29 @@ function Test3(porps) {
     );
 }
 
+// react 내부에서 구분을 위해 서로 다른 key 값이 필요함.
+function drawTest3(user) {
+    return <Test3 key={user.id} userInfo={user} />;
+}
+
 let testValue = [
     {
+        id: 1,
         name: "loki",
         age: 26,
     },
     {
+        id: 2,
         name: "imoge",
         age: 32,
     },
     {
+        id: 3,
         name: "Occ",
         age: 30,
     },
     {
+        id: 4,
         name: "kang",
         age: 31,
     },
@@ -43,7 +52,7 @@ function App() {
             Hello <Test1 />
             <Test2 porps1="test" testName="testName" rere="rere" />
             {testValue.map(function (user) {
-                return <Test3 userInfo={user} />;
+                return drawTest3(user);
             })}
         </div>
     );
