@@ -61,12 +61,14 @@ class App extends React.Component {
         count: 0,
     };
 
-    add = function () {
-        console.log("add");
+    add = () => {
+        // state 를 변경할때는 반드시 setState 로 새로운 state 를 만들어서 자동으로 refresh 되도록.
+        // 절대 기존에 선언한 state를 직접 변형하지 않는다.
+        this.setState((current) => ({ count: current.count + 1 }));
     };
 
-    minus = function () {
-        console.log("minus");
+    minus = () => {
+        this.setState((current) => ({ count: current.count - 1 }));
     };
 
     // function 이 아니기때문에 render 메소드 사용.
