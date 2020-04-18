@@ -53,6 +53,36 @@ let testValue = [
     },
 ];
 
+// class component
+class App extends React.Component {
+    // class 를 사용할때 사용 가능.
+    // 변경하고싶은 데이터를 state 에 저장.
+    state = {
+        count: 0,
+    };
+
+    add = function () {
+        console.log("add");
+    };
+
+    minus = function () {
+        console.log("minus");
+    };
+
+    // function 이 아니기때문에 render 메소드 사용.
+    render() {
+        return (
+            <div className="App">
+                <h1>Count : {this.state.count}</h1>
+                <button onClick={this.add}>Add</button>
+                <button onClick={this.minus}>Minus</button>
+            </div>
+        );
+    }
+}
+
+/*
+// function component
 function App() {
     return (
         <div className="App">
@@ -64,5 +94,6 @@ function App() {
         </div>
     );
 }
+*/
 
 export default App;
