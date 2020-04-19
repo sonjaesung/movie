@@ -1,14 +1,13 @@
 import React from "react";
 import axios from "axios";
 import MovieList from "./movieList";
+import "./movie.css";
 
 class Movie extends React.Component {
     state = {
         isLoading: true,
         movies: [],
     };
-
-    drawMovieList() {}
 
     async getMovies() {
         // let movies = await axios.get("https://yts.mx/api/v2/list_movies.json");
@@ -33,20 +32,28 @@ class Movie extends React.Component {
 
         return (
             <div>
-                {isLoading
-                    ? "Loading..."
-                    : movies.map((data) => {
-                          return (
-                              <MovieList
-                                  key={data.id}
-                                  id={data.id}
-                                  year={data.year}
-                                  title={data.title}
-                                  summary={data.summary}
-                                  poster={data.medium_cover_image}
-                              />
-                          );
-                      })}
+                <section className="container">
+                    {isLoading ? (
+                        <div className="loader">
+                            <span className="loaderText">Now Loading...</span>
+                        </div>
+                    ) : (
+                        <div className="movieList">
+                            {movies.map((data) => {
+                                return (
+                                    <MovieList
+                                        key={data.id}
+                                        id={data.id}
+                                        year={data.year}
+                                        title={data.title}
+                                        summary={data.summary}
+                                        poster={data.medium_cover_image}
+                                    />
+                                );
+                            })}
+                        </div>
+                    )}
+                </section>
             </div>
         );
     }
