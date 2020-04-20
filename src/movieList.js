@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./movieList.css";
+import "./MovieList.css";
 
 // state 를 사용하지 않을거면 function component 로 해도 무관.
 function MovieList({ year, title, summary, poster, genres }) {
