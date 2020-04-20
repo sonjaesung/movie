@@ -48,6 +48,7 @@ class Movie extends React.Component {
                                         title={data.title}
                                         summary={data.summary}
                                         poster={data.medium_cover_image}
+                                        genres={data.genres}
                                     />
                                 );
                             })}
