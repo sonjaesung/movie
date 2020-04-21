@@ -1,63 +1,18 @@
 import React from "react";
-import axios from "axios";
-import MovieList from "./movieList";
-import "./Movie.css";
+import { HashRouter, Route } from "react-router-dom";
+import Home from "./routes/home";
+import About from "./routes/about";
 
-class Movie extends React.Component {
-    state = {
-        isLoading: true,
-        movies: [],
-    };
-
-    async getMovies() {
-        // let movies = await axios.get("https://yts.mx/api/v2/list_movies.json");
-        // ES6 식 표현.
-        let {
-            data: {
-                data: { movies },
-            },
-        } = await axios.get(
-            "https://yts.mx/api/v2/list_movies.json?sort_by=rating"
-        );
-        this.setState({ movies, isLoading: false });
-    }
-
-    // component가 랜더링 완료 후.  javascript 기능 사용 가능.
-    componentDidMount() {
-        this.getMovies();
-    }
-
-    render() {
-        let { isLoading, movies } = this.state;
-
-        return (
-            <div>
-                <section className="container">
-                    {isLoading ? (
-                        <div className="loader">
-                            <span className="loaderText">Now Loading...</span>
-                        </div>
-                    ) : (
-                        <div className="movieList">
-                            {movies.map((data) => {
-                                return (
-                                    <MovieList
-                                        key={data.id}
-                                        id={data.id}
-                                        year={data.year}
-                                        title={data.title}
-                                        summary={data.summary}
-                                        poster={data.medium_cover_image}
-                                        genres={data.genres}
-                                    />
-                                );
-                            })}
-                        </div>
-                    )}
-                </section>
-            </div>
-        );
-    }
+function Movie() {
+    return (
+        <HashRouter>
+            {/*라우터에는 중요한 두가지 props 가 들어감.  랜더링할곳, 무엇을 할 지.*/}
+            {/* /about 를 호출 시 첫번째 / component 랜더링 그다음 /about component 랜더링*/}
+            {/* exact={true} 를 해주면 url 이 정확히 일치 일때만 호출 */}
+            <Route path="/" component={Home} exact={true} />
+            <Route path="/about" component={About} />
+        </HashRouter>
+    );
 }
 
 export default Movie;
