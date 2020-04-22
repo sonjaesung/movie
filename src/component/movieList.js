@@ -4,12 +4,15 @@ import { Link } from "react-router-dom";
 import "./MovieList.css";
 
 // state 를 사용하지 않을거면 function component 로 해도 무관.
-function MovieList({ year, title, summary, poster, genres }) {
+function MovieList({ id, year, title, summary, poster, genres }) {
+    // route props 를 전달 가능. pathname, state, search, hash...
     return (
         <Link
             to={{
-                pathname: "/movie-detail",
+                /*pathname: "/movie-detail",*/
+                pathname: `/movie/:${id}`,
                 state: {
+                    id: id,
                     year: year,
                     title: title,
                     summary: summary,

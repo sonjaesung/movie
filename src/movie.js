@@ -15,7 +15,12 @@ function Movie() {
             <Navigation />
             <Route path="/" component={Home} exact={true} />
             <Route path="/about" component={About} />
-            <Route path="/movie-detail" component={Detail} />
+
+            {/* 경로/:변수 로 전달 가능 */}
+            <Route
+                /*path="/movie-detail"*/ path="/movie/:id"
+                component={Detail}
+            />
         </HashRouter>
     );
 }
