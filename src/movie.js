@@ -2,6 +2,7 @@ import React from "react";
 import { HashRouter, Route } from "react-router-dom";
 import Home from "./routes/home";
 import About from "./routes/about";
+import Detail from "./routes/detail";
 import Navigation from "./component/navigation";
 
 // BrowserRouter 를 사용하면 # 이 없슴.
@@ -14,6 +15,7 @@ function Movie() {
             <Navigation />
             <Route path="/" component={Home} exact={true} />
             <Route path="/about" component={About} />
+            <Route path="/movie-detail" component={Detail} />
         </HashRouter>
     );
 }
